@@ -53,7 +53,7 @@ module.exports = {
         try {
             const user = await User.findOneAndDelete({_id: req.params.id});
             if (!user) {
-                return res.json({ message: 'No user found with this ID!!!', err });
+                return res.json({ message: 'Deleted user not found!!!', err });
             }
             res.json(user);
         } catch (err) {
