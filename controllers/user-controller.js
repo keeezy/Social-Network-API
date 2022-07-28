@@ -40,7 +40,7 @@ module.exports = {
         try {
             const user = await User.findOneAndUpdate({_id: req.params.id}, {$set: req.body}, {new: true});
             if (!user) {
-                return res.json({ message: 'No updated user found!!!', err });
+                return res.json({ message: 'No user found with this ID!!!', err });
             }
             res.json(user);
         } catch (err) {
@@ -53,7 +53,7 @@ module.exports = {
         try {
             const user = await User.findOneAndDelete({_id: req.params.id});
             if (!user) {
-                return res.json({ message: 'Deleted user not found!!!', err });
+                return res.json({ message: 'No user found with this ID!!!', err });
             }
             res.json(user);
         } catch (err) {
