@@ -1,31 +1,27 @@
 
 const router = require('express').Router();
-const { Thought, Reaction} = require('../../models')
+const {
+    getAllThoughts,
+    getThoughtById,
+    createThought,
+    updateThought,
+    deleteThought,
+} = require('../../controllers/thought-controller');
 
 //TODO: ROUTE TO GET ALL THOUGHTS
-router.get('/', (req,res)=> {
-
-})
+router.get('/', getAllThoughts);
 
 //TODO: ROUTE TO CREATE A NEW THOUGHT
-router.post('/', (req,res)=> {
-
-});
+router.post('/', createThought);
 
 //TODO: ROUTE TO GET SINGLE THOUGHT BASED ON THOUGHT ID
-router.get('/:thoughtId', (req,res)=> {
-
-})
+router.get('/:id', getThoughtById);
 
 //TODO: ROUTE TO UPDATE A THOUGHT
-router.put('/', (req,res)=> {
-
-})
+router.put('/:id', updateThought);
 
 //TODO: ROUTE TO DELETE A THOUGHT BASED ON THOUGHT ID
-router.delete('/:thoughtId', (req,res)=> {
-
-});
+router.delete('/:id', deleteThought);
 
 //TODO: ROUTE TO ADD REACTION TO A THOUGHT
 router.post('/:thoughtId/reactions', (req,res)=> {
