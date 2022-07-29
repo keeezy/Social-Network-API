@@ -26,9 +26,9 @@ router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);
 
 //TODO - ROUTE THAT ADDS A FRIEND TO A USER
-router.post('/:userID/friends/:friendId', addFriend);
+router.post('/:id/friends/:friendId', addFriend);
 
 //TODO - ROUTE THAT DELETES A FRIEND FROM A USER'S FRIENDS, DONT DELETE THE FRIEND AS A USER THOUGH!
-router.delete('/:userId/friends/:friendId', removeFriend);
+router.delete('/:id/friends/:friendId', removeFriend);
 
 module.exports = router;

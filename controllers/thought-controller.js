@@ -24,7 +24,7 @@ module.exports = {
         }
     },
 
-    // POST /api/thoughts/:id
+    // POST /api/thoughts
     async createThought(req, res) {
         try {
             const thought = await Thought.create(req.body);
@@ -35,7 +35,7 @@ module.exports = {
         }
     },
 
-    // PUT /api/thoughts/:id
+    // PUT /api/thoughts
     async updateThought(req, res) {
         try {
             const thought = await Thought.findOneAndUpdate({_id: req.params.id}, {$set: req.body}, {new: true});

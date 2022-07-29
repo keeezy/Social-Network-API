@@ -14,6 +14,7 @@ const {
 const {
     createReaction,
     deleteReaction,
+    singleReaction,
 } = require('../../controllers/reaction-controller');
 
 //TODO: ROUTE TO GET ALL THOUGHTS
