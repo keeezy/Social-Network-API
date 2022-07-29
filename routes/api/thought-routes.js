@@ -1,5 +1,7 @@
 
 const router = require('express').Router();
+
+//IMPORT FROM THOUGHT-CONTROLLER 
 const {
     getAllThoughts,
     getThoughtById,
@@ -7,6 +9,12 @@ const {
     updateThought,
     deleteThought,
 } = require('../../controllers/thought-controller');
+
+// IMPORT FROM REACTION-CONTROLLER
+const {
+    createReaction,
+    deleteReaction,
+} = require('../../controllers/reaction-controller');
 
 //TODO: ROUTE TO GET ALL THOUGHTS
 router.get('/', getAllThoughts);
@@ -24,13 +32,9 @@ router.put('/:id', updateThought);
 router.delete('/:id', deleteThought);
 
 //TODO: ROUTE TO ADD REACTION TO A THOUGHT
-router.post('/:thoughtId/reactions', (req,res)=> {
-
-});
+router.post('/:thoughtId/reactions', createReaction);
 
 //TODO: ROUTE TO DELETE A REACTION ON A THOUGHT
-router.delete('/:thoughtId/reactions/:reactionId', (req,res)=> {
-
-})
+router.delete('/:thoughtId/reactions/:reactionId', deleteReaction);
 
 module.exports = router;
