@@ -4,20 +4,20 @@ const { User, Thought, Reaction } = require('../models');
 // User Data
 const userSeed = [
     {
-        'username': 'drake',
-        'email': 'drake@gmail.com',
+        username: 'drake',
+        email: 'drake@gmail.com',
     },
     {
-        'username': 'giveon',
-        'email': 'giveon@gmail.com',
+        username: 'giveon',
+        email: 'giveon@gmail.com',
     },
     {
-        'username': 'blxst',
-        'email': 'blxst@gmail.com',
+        username: 'blxst',
+        email: 'blxst@gmail.com',
     },
     {
-        'username': 'theweekend',
-        'email': 'theweekend@gmail.com',
+        username: 'theweekend',
+        email: 'theweekend@gmail.com',
     },
 ];
 

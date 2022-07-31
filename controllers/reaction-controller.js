@@ -6,7 +6,7 @@ module.exports = {
         try {
             const reaction = await Reaction.create(req.body);
 
-            const thought = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $push: { reactions: reaction } }, { new: true });
+            const thought = await Thought.findOneAndUpdate(req.params.thoughtId , { $push: { reactions: reaction } }, { new: true });
             if (!thought) {
                 return res.json({ message: 'No reaction found with this ID!!!'});
             }
@@ -20,9 +20,9 @@ module.exports = {
     //DELETE /api/thoughts/:thoughtId/reactions/:reactionId
     async deleteReaction(req, res) {
         try {
-            const reaction = await Reaction.findOneAndDelete({ _id: req.params.reactionId });
+            const reaction = await Reaction.findByIdAndDelete(req.params.reactionId);
             
-            const thought = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: { reactions: { _id: req.params.reactionId } } }, { new: true });
+            const thought = await Thought.findByIdAndUpdate(req.params.thoughtId , { $pull: { reactions: req.params.reactionId } }, { new: true });
             if (!thought) {
                 return res.json({ message: 'No reaction found with this ID!!!'});
             }
