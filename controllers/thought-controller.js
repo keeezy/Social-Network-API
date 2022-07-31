@@ -7,7 +7,7 @@ module.exports = {
             const thoughts = await Thought.find();
             res.json(thoughts);
         } catch (err) {
-            res.json({ message: 'Error getting all thoughts!!!', err });
+            res.status(400).json({ message: 'Error getting all thoughts!!!', err });
         }
     },
 
@@ -16,11 +16,11 @@ module.exports = {
         try {
             const thought = await Thought.findOne({_id: req.params.id});
             if (!thought) {
-                return res.json({ message: 'No thought found with this ID!!!', err });
+                return res.status(400).json({ message: 'No thought found with this ID!!!', err });
             }
             res.json(thought);
         } catch (err) {
-            res.json({ message: 'Error getting single thought!!! ', err });
+            res.status(400).json({ message: 'Error getting single thought!!! ', err });
         }
     },
 
@@ -31,7 +31,7 @@ module.exports = {
             await User.findOneAndUpdate({_id: req.params.id}, {$push: {thoughts: thought._id}});
             res.json(thought);
         } catch (err) {
-            res.json({ message: 'Error creating thought!!!', err });
+            res.status(400).json({ message: 'Error creating thought!!!', err });
         }
     },
 
@@ -40,11 +40,11 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate({_id: req.params.id}, {$set: req.body}, {new: true});
             if (!thought) {
-                return res.json({ message: 'No thought found with this ID!!!', err });
+                return res.status(400).json({ message: 'No thought found with this ID!!!', err });
             }
             res.json(thought);
         } catch (err) {
-            res.json({ message: 'Error updating thought!!!', err });
+            res.status(400).json({ message: 'Error updating thought!!!', err });
         }
     },
 
@@ -53,11 +53,11 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndDelete({_id: req.params.id});
             if (!thought) {
-                return res.json({ message: 'No thought found with this ID!!!', err });
+                return res.status(400).json({ message: 'No thought found with this ID!!!', err });
             }
             res.json(thought);
         } catch (err) {
-            res.json({ message: 'Error deleting thought!!!', err });
+            res.status(400).json({ message: 'Error deleting thought!!!', err });
         }
     }
 

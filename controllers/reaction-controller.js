@@ -8,11 +8,11 @@ module.exports = {
 
             const thought = await Thought.findOneAndUpdate(req.params.thoughtId , { $push: { reactions: reaction } }, { new: true });
             if (!thought) {
-                return res.json({ message: 'No reaction found with this ID!!!'});
+                return res.status(400).json({ message: 'No reaction found with this ID!!!'});
             }
             res.json({ message: 'Reaction created successfully!!!' });
         } catch (err) {
-            res.json({ message: 'Error creating reaction!!!', err });
+            res.status(400).json({ message: 'Error creating reaction!!!', err });
         }
 
     },
@@ -24,11 +24,11 @@ module.exports = {
             
             const thought = await Thought.findByIdAndUpdate(req.params.thoughtId , { $pull: { reactions: req.params.reactionId } }, { new: true });
             if (!thought) {
-                return res.json({ message: 'No reaction found with this ID!!!'});
+                return res.status(400).json({ message: 'No reaction found with this ID!!!'});
             }
             res.json({ message: 'Reaction deleted successfully!!!' });
         } catch (err) {
-            res.json({ message: 'Error deleting reaction!!!', err });
+            res.status(400).json({ message: 'Error deleting reaction!!!', err });
         }
     },
 

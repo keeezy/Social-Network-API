@@ -8,7 +8,7 @@ module.exports = {
             const users = await User.find();
             res.json(users);
         } catch (err) {
-            res.json({ message: 'Error getting all users!!!', err });
+            res.status(400).json({ message: 'Error getting all users!!!', err });
         }
     },
 
@@ -17,11 +17,11 @@ module.exports = {
         try {
             const user = await User.findOne({_id: req.params.id});
             if (!user) {
-                return res.json({ message: 'No user found with this ID!!!'});
+                return res.status(400).json({ message: 'No user found with this ID!!!'});
             }
             res.json(user);
         } catch (err) {
-            res.json({ message: 'Error getting single user!!! ', err });
+            res.status(400).json({ message: 'Error getting single user!!! ', err });
         }
     },
 
@@ -31,7 +31,7 @@ module.exports = {
             const user = await User.create(req.body);
             res.json(user);
         } catch (err) {
-            res.json({ message: 'Error creating user!!!', err });
+            res.status(400).json({ message: 'Error creating user!!!', err });
         }
     },
 
@@ -40,11 +40,11 @@ module.exports = {
         try {
             const user = await User.findOneAndUpdate({_id: req.params.id}, {$set: req.body}, {new: true});
             if (!user) {
-                return res.json({ message: 'No user found with this ID!!!'});
+                return res.status(400).json({ message: 'No user found with this ID!!!'});
             }
             res.json(user);
         } catch (err) {
-            res.json({ message: 'Error updating user!!!', err });
+            res.status(400).json({ message: 'Error updating user!!!', err });
         }
     },
 
@@ -53,11 +53,11 @@ module.exports = {
         try {
             const user = await User.findOneAndDelete({_id: req.params.id});
             if (!user) {
-                return res.json({ message: 'No user found with this ID!!!'});
+                return res.status(400).json({ message: 'No user found with this ID!!!'});
             }
             res.json(user);
         } catch (err) {
-            res.json({ message: 'Error deleting user!!!', err });
+            res.status(400).json({ message: 'Error deleting user!!!', err });
         }
     },
 
@@ -66,16 +66,16 @@ module.exports = {
         try {
             const user = await User.findByIdAndUpdate({_id: req.params.id}, {$push: {friends: req.params.friendId}});
             if (!user) {
-                return res.json({ message: 'No user found with this ID!!!'});
+                return res.status(400).json({ message: 'No user found with this ID!!!'});
             }
 
             const friend = await User.findByIdAndUpdate({_id: req.params.friendId}, {$push: {friends: req.params.friendId}});
             if (!friend) {
-                return res.json({ message: 'No friend found with this ID!!!', err });
+                return res.status(400).json({ message: 'No friend found with this ID!!!', err });
             }
             res.json({ message: 'Added a new friend :) !!!'});
         } catch (err) {
-            res.json({ message: 'Error adding friend!!!', err });
+            res.status(400).json({ message: 'Error adding friend!!!', err });
         }
     },
 
@@ -84,16 +84,16 @@ module.exports = {
         try {
             const user = await User.findByIdAndUpdate({_id: req.params.id}, {$pull: {friends: req.params.friendId}});
             if (!user) {
-                return res.json({ message: 'No user found with this ID!!!'});
+                return res.status(400).json({ message: 'No user found with this ID!!!'});
             }
 
             const friend = await User.findByIdAndUpdate({_id: req.params.id}, {$pull: {friends: req.params.friendId}});
             if (!friend) {
                 return res.json({ message: 'No friend found with this ID!!!'});
             }
-            res.json({ message: 'Lost a friend :( !!!'});
+            res.status(400).json({ message: 'Lost a friend :( !!!'});
         } catch (err) {
-            res.json({ message: 'Error removing friend!!!', err });
+            res.status(400).json({ message: 'Error removing friend!!!', err });
         }
     }
 
