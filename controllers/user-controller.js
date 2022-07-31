@@ -91,7 +91,7 @@ module.exports = {
             if (!friend) {
                 return res.json({ message: 'No friend found with this ID!!!'});
             }
-            res.status(400).json({ message: 'Lost a friend :( !!!'});
+            res.json({ message: 'Lost a friend :( !!!'});
         } catch (err) {
             res.status(400).json({ message: 'Error removing friend!!!', err });
         }
