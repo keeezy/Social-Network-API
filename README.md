@@ -2,7 +2,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Description
-API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. [Link to Demo](https://drive.google.com/file/d/1q8bDUF9lZkUa5P2mC9kz9ptZgvHrycJn/view)
+API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. [Link to Demo](https://drive.google.com/file/d/16FnfhFdHsHUBZ4R6gJMGCcmX_b9TJOsO/view)
 
 ## Table of Contents:
 * [Installation](#installation)
